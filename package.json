@@ -5,11 +5,12 @@
     "node": "10.15.3"
   },
   "private": false,
-  "author" : "Spencer Jack",
+  "author": "Spencer Jack",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express-favicon": "^2.0.1",
+    "mongoose": "^5.4.18",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
