@@ -8,6 +8,7 @@
   "author": "Spencer Jack",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "cors": "^2.8.5",
     "express-favicon": "^2.0.1",
     "mongoose": "^5.4.18",
