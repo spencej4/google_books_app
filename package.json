@@ -1,6 +1,9 @@
 {
   "name": "google-books",
   "version": "0.1.0",
+  "engines": {
+    "node": "10.15.3"
+  },
   "private": false,
   "author" : "Spencer Jack",
   "license": "ISC",
