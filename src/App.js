@@ -25,7 +25,7 @@ class App extends Component {
   };
 
   render() {
-    // this.searchGoogleBooks('coffee');
+    this.searchGoogleBooks('coffee');
 
     return (
       <div className="App">
