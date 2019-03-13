@@ -8,6 +8,7 @@ class SearchInput extends Component {
     }
   }
 
+
   onChange(e) {
     this.setState({
         value: e.target.value,

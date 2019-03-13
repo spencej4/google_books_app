@@ -55,11 +55,8 @@ class App extends Component {
       link: buyLink
     };
 
-    let id = key;
 
-    console.log(book);
-
-    axios.post("/api/books/" + id)
+    axios.post("/api/books/" + book)
       .then(function(response){
           console.log(response);
         })
