@@ -1,42 +1,110 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Books from './components/Books/index';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from './components/Header/index';
+import Hero from './components/Hero/index';
+import SearchInput from './components/SearchInput/index';
+import Saved from './components/Saved/index';
+import axios from 'axios';
+import Books from './components/Books/index';
 import API from './utils/API';
+
 
 class App extends Component {
   constructor(props) {
       super(props)
       this.state = {
-          searchInput: '',
-          results: '',
-
+          text: '',
+          results: [],
       };
-      // bind params
-      // this.checkForDuplicates = this.checkForDuplicates.bind(this);
   }
 
- 
-  searchGoogleBooks = query => {
+
+  searchGoogleBooks = () => {
+    let query = this.state.text;
+
     API.search(query)
-      // .then(res => console.log(res))
-      .then(res => this.setState({ results: res.data.data }))
-      .catch(err => console.log(err));
-      // console.log(this.state.results);
+      .then((response) => {
+        this.setState(
+          {results: response.data.items}
+        );
+      }).catch((error) => {
+        console.log(error);
+      });
   };
 
-  render() {
-    this.searchGoogleBooks('coffee');
 
-    return (
-      <div className="App">
-        <header className="App-header">
-         Google Books
-        </header>
-        {/* <Books/> */}
-      </div>
-
+  handleChange(text) {
+    this.setState(
+      {text: text}
     );
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.searchGoogleBooks();
+  }
+
+  handleBookSave = (key, title, author, thumbnail, description, buyLink) => {
+    let book = {
+      id: key, 
+      title: title, 
+      author: author,
+      image: thumbnail,
+      description: description,
+      link: buyLink
+    };
+
+    let id = key;
+
+    console.log(book);
+
+    axios.post("/api/books/" + id)
+      .then(function(response){
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+      });
+  };
+  
+
+  render() 
+    {
+      return (
+        <Router>
+            <div className="App">
+              <Header
+                onChange={this.handleChange.bind(this)} 
+                value={this.state.text}
+                handleSubmit={this.handleSubmit}
+              />
+              <div>
+                <Route exact path="/" component={Hero}/>
+                <Route
+                       exct path='/search'
+                        render={(props) => 
+                          <SearchInput 
+                            onChange={this.handleChange.bind(this)} 
+                            value={this.state.text}
+                            handleSubmit={this.handleSubmit}
+                          />
+                        }
+                  />
+                <Route exact path="/saved" component={Saved} />
+              </div>
+ 
+              {this.state.results.length !== 0 ? (
+                  <Books
+                    results={this.state.results}
+                    handleBookSave={this.handleBookSave}
+                  />
+                ) : (null)
+              }
+            </div>
+        </Router>
+      );
+    }
 }
 
 export default App;
