@@ -20,7 +20,7 @@ export default class Books extends React.Component {
                 <div className='card' key={key}>
                     <div className='image'><img src={thumbnail} alt="presentation" /></div>
                     <div className='book-title'>{title}</div>
-                    <div className='book-author'>{author}</div>
+                    <div className='book-author'>Author: {author}</div>
                     <div className='book-description'>{description}</div>
                     <div className='book-link'><a href={buyLink} rel="noopener noreferrer" target='_blank'>Purchase</a></div>
                     <div className='add-book-button' value={key} onClick={this.saveBook.bind(this, key, title, author, thumbnail, description, buyLink)}>
