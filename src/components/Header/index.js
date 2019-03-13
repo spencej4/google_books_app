@@ -5,13 +5,13 @@ export default class MainMenu extends React.Component {
     render(){
         return (
             <div className='header'>
-                <Link to="/">
+                <Link to="/" className='link-container'>
                     <p className='header-link'>Home</p>
                 </Link>
-                <Link to="/search">
+                <Link to="/search" className='link-container'>
                     <p className='header-link'>Search</p>
                 </Link>
-                <Link to="/saved">
+                <Link to="/saved" className='link-container'>
                     <p className='header-link'>Saved</p>
                 </Link>
                 
