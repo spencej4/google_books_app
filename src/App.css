@@ -199,6 +199,8 @@ img {
 .book-title {
   top: 2%;
   left: 2%;
+  height: 10%;
+  overflow: hidden;
   padding-right: 2%;
   float: left;
   display: block;
@@ -209,8 +211,12 @@ img {
 }
 
 .book-author {
-  top: 15%;
+  top: 14%;
   left: 2%;
+  width: 72%;
+  height: 8%;
+  overflow: hidden;
+  text-align: left;
   display: block;
   position: absolute;
 }
@@ -272,5 +278,6 @@ a {
 }
 /* =================================================================== */
 .saved {
-  margin-top: 60px;
+  margin-top: 90px;
+  font-size: 22px;
 }
