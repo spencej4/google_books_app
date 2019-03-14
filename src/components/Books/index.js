@@ -24,7 +24,7 @@ export default class Books extends React.Component {
                     <div className='book-description'>{description}</div>
                     <div className='book-link'><a href={buyLink} rel="noopener noreferrer" target='_blank'>Purchase</a></div>
                     <div className='add-book-button' value={key} onClick={this.saveBook.bind(this, key, title, author, thumbnail, description, buyLink)}>
-                        <a href='/api/books/:id' className='save-book'>Save Book</a>
+                        <p className='save-book'>Save Book</p>
                     </div>
                 </div>
             )
